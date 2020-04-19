@@ -19,13 +19,15 @@ public class Mario extends Sprite {
       super(img, x, y, 40, 60);
    }
 
+   // Walk while within a certain velocity range
    public void walk(int dir) {
       if (this.xVelocity <= 10.0D && this.xVelocity >= -10.0D) {
          this.xVelocity += (double)dir;
       }
 
    }
-
+   
+   // Jump affected by gravity if Mario is on a surface
    public void jump() {
       if (this.onASurface) {
          this.yVelocity -= this.jumpStrength;
