@@ -33,7 +33,7 @@ public class Mario extends Sprite {
 
    }
 
-   public void act(ArrayList<Shape> obstacles) {
+   public void act(ArrayList<Shape> obstacles) {   //ADD SOMETHING! PRESS i FOR INSERT MODE AND PRESS ESCAPE WHEN YOU ARE DONE. AFTER PRESSING ESCAPE, YOU CAN TYPE : w q ! to exit.
       double xCoord = this.getX();
       double yCoord = this.getY();
       double width = this.getWidth();
