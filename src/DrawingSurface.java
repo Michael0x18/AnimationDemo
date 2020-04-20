@@ -10,6 +10,7 @@ public class DrawingSurface extends PApplet {
    public static final int DRAWING_HEIGHT = 600;
    private Rectangle screenRect = new Rectangle(0, 0, 800, 600);
    private Mario mario;
+   private Mario mario2;
    private ArrayList<Shape> obstacles = new ArrayList();
    private ArrayList<Integer> keys = new ArrayList();
    private ArrayList<PImage> assets = new ArrayList();
@@ -24,10 +25,12 @@ public class DrawingSurface extends PApplet {
 
    public void spawnNewMario() {
       this.mario = new Mario((PImage)this.assets.get(0), 380, 50);
+      this.mario2 = new Mario((PImage)this.assets.get(0), 340, 50);
    }
 
    public void setup() {
       this.assets.add(this.loadImage("mario.png"));
+      this.spawnNewMario();
       this.spawnNewMario();
    }
 
@@ -63,7 +66,24 @@ public class DrawingSurface extends PApplet {
       }
 
       this.mario.act(this.obstacles);
-      if (!this.screenRect.intersects(this.mario)) {
+      if (!this.screenRect.intersects(this.mario2)) {
+         this.spawnNewMario();
+      }
+      this.mario2.draw(this);
+      if (this.isPressed(65)) {
+         this.mario2.walk(-1);
+      }
+
+      if (this.isPressed(68)) {
+         this.mario2.walk(1);
+      }
+
+      if (this.isPressed(87)) {
+         this.mario2.jump();
+      }
+
+      this.mario2.act(this.obstacles);
+      if (!this.screenRect.intersects(this.mario2)) {
          this.spawnNewMario();
       }
 
